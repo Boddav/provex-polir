@@ -1,0 +1,16 @@
+{
+  "phone": "+36 30 210 6895",
+  "email": "kozmetika@provex.hu",
+  "addressShort": "Budapest, XIII. kerület",
+  "addressNote": "Pontos cím egyeztetés után",
+  "hoursMain": "H–P · 08:00 – 18:00",
+  "hoursSaturday": "Szo · előre egyeztetve",
+  "responseTime": "Munkanapokon 2 órán belül",
+  "responseTimeSub": "Hétvégén következő munkanapon",
+  "heroBadge": "Új ügyfél? -10% az első kerámia bevonatra",
+  "pricing": [
+    { "price": "79 000 Ft", "duration": "~ 1 munkanap" },
+    { "price": "189 000 Ft", "duration": "~ 2–3 munkanap" },
+    { "price": "690 000 Ft", "duration": "~ 5–7 munkanap" }
+  ]
+}

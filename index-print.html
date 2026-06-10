@@ -1,0 +1,1317 @@
+<!doctype html>
+<html lang="hu">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>PROVEX — Láthatatlan védelem | Autófóliázás, polírozás, detailing</title>
+<meta name="description" content="PROVEX autókozmetika: PPF kőfelverődés elleni fólia, kerámia bevonat, polírozás, fényszóró felújítás, ablakfóliázás és full wrap. Prémium minőség, garanciával." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Saira:wght@400;500;600;700;800&family=Manrope:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --bg:#000;
+  --bg-1:#070707;
+  --bg-2:#0d0d0d;
+  --surface:#121212;
+  --surface-2:#171717;
+  --line:rgba(255,255,255,.07);
+  --line-2:rgba(255,255,255,.12);
+  --text:#f4f4f4;
+  --muted:#8a8a8a;
+  --muted-2:#5a5a5a;
+  --accent:#a8e635;
+  --accent-2:#86c020;
+  --accent-glow:rgba(168,230,53,.35);
+  --display:"Saira", system-ui, sans-serif;
+  --body:"Manrope", system-ui, sans-serif;
+  --mono:"JetBrains Mono", ui-monospace, monospace;
+  --maxw:1280px;
+  --pad:clamp(20px,4vw,48px);
+  --radius:14px;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:var(--body);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+html{scroll-behavior:smooth}
+body{overflow-x:hidden;line-height:1.55}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer}
+
+/* ============== Typography system ============== */
+.h-display{font-family:var(--display);font-weight:700;letter-spacing:-.01em;line-height:.95}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+.eyebrow .dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--accent);margin-right:10px;vertical-align:middle;box-shadow:0 0 12px var(--accent-glow)}
+.section-title{font-family:var(--display);font-weight:700;font-size:clamp(34px,5vw,64px);letter-spacing:-.02em;line-height:1;margin:18px 0 0}
+.section-sub{color:var(--muted);font-size:17px;max-width:60ch;margin:18px 0 0}
+
+/* ============== Layout ============== */
+.wrap{max-width:var(--maxw);margin:0 auto;padding-left:var(--pad);padding-right:var(--pad)}
+section{position:relative;padding:clamp(80px,10vw,140px) 0;border-top:1px solid var(--line)}
+section:first-of-type{border-top:0}
+.grain{position:absolute;inset:0;pointer-events:none;opacity:.5;mix-blend-mode:overlay;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1   0 0 0 0 1   0 0 0 0 1   0 0 0 .08 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+
+/* ============== Nav ============== */
+nav.top{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:18px var(--pad);transition:background .3s ease,border-color .3s ease,backdrop-filter .3s ease;border-bottom:1px solid transparent}
+nav.top.scrolled{background:rgba(7,7,7,.78);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom-color:var(--line)}
+.logo{font-family:var(--display);font-weight:700;font-size:22px;letter-spacing:.22em;display:flex;align-items:center;gap:10px}
+.logo .x{color:var(--accent);position:relative}
+.logo .x::after{content:"";position:absolute;left:-6px;right:-3px;top:50%;height:2px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .5s ease}
+.logo:hover .x::after{transform:scaleX(1)}
+.nav-links{display:flex;gap:32px;align-items:center}
+.nav-links a{font-size:14px;color:var(--muted);transition:color .2s ease;position:relative}
+.nav-links a:hover{color:var(--text)}
+.nav-cta{display:flex;align-items:center;gap:14px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:13px 22px;border-radius:999px;font-weight:600;font-size:14px;letter-spacing:.01em;border:1px solid transparent;transition:transform .2s ease,background .2s ease,color .2s ease,border-color .2s ease,box-shadow .2s ease;white-space:nowrap}
+.btn-primary{background:var(--accent);color:#0a0a0a;box-shadow:0 0 0 0 var(--accent-glow)}
+.btn-primary:hover{background:#bdf24a;box-shadow:0 0 30px var(--accent-glow);transform:translateY(-1px)}
+.btn-ghost{background:transparent;color:var(--text);border-color:var(--line-2)}
+.btn-ghost:hover{border-color:rgba(255,255,255,.4);background:rgba(255,255,255,.04)}
+.btn-text{background:transparent;color:var(--text);padding:13px 6px}
+.btn-text:hover{color:var(--accent)}
+.btn .arrow{width:14px;height:14px;transition:transform .25s ease}
+.btn:hover .arrow{transform:translateX(3px)}
+.menu-btn{display:none;background:none;border:0;color:var(--text);padding:8px;border-radius:8px}
+.menu-btn svg{width:24px;height:24px}
+
+/* ============== Hero ============== */
+.hero{padding-top:140px;padding-bottom:0;border-top:0;min-height:100vh;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:
+  radial-gradient(900px 600px at 85% 50%, rgba(168,230,53,.06), transparent 60%),
+  radial-gradient(1200px 800px at 10% 10%, rgba(255,255,255,.04), transparent 70%),
+  linear-gradient(180deg,#000 0%,#050505 100%);
+  z-index:-1}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;width:100%}
+.hero-copy{position:relative;z-index:2}
+.hero-h1{font-family:var(--display);font-weight:700;font-size:clamp(46px,7vw,96px);line-height:.93;letter-spacing:-.025em;margin:24px 0 0}
+.hero-h1 .accent{color:var(--accent);font-style:italic;font-weight:600}
+.hero-h1 .line-through{position:relative;display:inline-block}
+.hero-h1 .line-through::after{content:"";position:absolute;left:-4%;right:-4%;top:54%;height:6px;background:var(--accent);box-shadow:0 0 24px var(--accent-glow)}
+.hero-sub{color:var(--muted);font-size:clamp(16px,1.5vw,19px);max-width:48ch;margin:28px 0 0;line-height:1.6}
+.hero-cta-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:36px;align-items:center}
+.hero-contact{display:flex;gap:24px;margin-top:42px;padding-top:28px;border-top:1px solid var(--line);font-size:14px;color:var(--muted);flex-wrap:wrap}
+.hero-contact a{color:var(--text);display:inline-flex;align-items:center;gap:8px;transition:color .2s}
+.hero-contact a:hover{color:var(--accent)}
+.hero-contact svg{width:16px;height:16px;color:var(--accent)}
+
+.hero-visual{position:relative;aspect-ratio:1/1;border-radius:var(--radius);overflow:hidden;border:1px solid var(--line-2);background:#000}
+.hero-visual img{width:100%;height:100%;object-fit:cover;object-position:center}
+.hero-visual::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 60%,rgba(0,0,0,.4));pointer-events:none}
+.hero-visual .badge{position:absolute;top:18px;left:18px;font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);background:rgba(0,0,0,.55);backdrop-filter:blur(8px);padding:8px 12px;border-radius:999px;border:1px solid var(--line-2);display:flex;align-items:center;gap:8px}
+.hero-visual .badge .pulse{width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 0 var(--accent);animation:pulse 2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 var(--accent-glow)}70%{box-shadow:0 0 0 10px transparent}100%{box-shadow:0 0 0 0 transparent}}
+
+.hero-marquee{margin-top:90px;padding:22px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;white-space:nowrap}
+.hero-marquee-track{display:inline-flex;gap:60px;animation:marq 35s linear infinite;font-family:var(--display);font-weight:600;letter-spacing:.1em;text-transform:uppercase;font-size:18px;color:var(--muted-2)}
+.hero-marquee-track span{display:inline-flex;align-items:center;gap:60px}
+.hero-marquee-track .dot{width:6px;height:6px;border-radius:50%;background:var(--accent);display:inline-block}
+@keyframes marq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ============== Stats ============== */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.stat{padding:36px 28px;border-right:1px solid var(--line);position:relative}
+.stat:last-child{border-right:0}
+.stat .num{font-family:var(--display);font-weight:700;font-size:clamp(40px,5vw,64px);line-height:1;letter-spacing:-.02em}
+.stat .num .plus{color:var(--accent);font-size:.6em;vertical-align:top;margin-left:2px}
+.stat .label{margin-top:10px;color:var(--muted);font-size:13px;letter-spacing:.04em}
+
+/* ============== Services ============== */
+.services-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px;margin-top:56px}
+.svc{grid-column:span 4;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:32px;position:relative;overflow:hidden;transition:border-color .25s ease,transform .25s ease,background .25s ease;display:flex;flex-direction:column;min-height:280px}
+.svc::before{content:"";position:absolute;top:0;left:0;width:0;height:1px;background:var(--accent);transition:width .5s ease}
+.svc:hover{border-color:var(--line-2);background:var(--surface-2);transform:translateY(-2px)}
+.svc:hover::before{width:100%}
+.svc.feature{grid-column:span 6;min-height:340px;background:linear-gradient(135deg,#101010,#0a0a0a)}
+.svc.feature .svc-icon{color:var(--accent)}
+.svc.wide{grid-column:span 8}
+.svc.tall{grid-column:span 4;grid-row:span 2;min-height:340px}
+.svc-num{font-family:var(--mono);font-size:11px;letter-spacing:.18em;color:var(--muted-2);text-transform:uppercase}
+.svc-icon{width:48px;height:48px;color:var(--text);margin:20px 0 24px}
+.svc-icon svg{width:100%;height:100%}
+.svc h3{font-family:var(--display);font-weight:600;font-size:24px;letter-spacing:-.01em;margin:0 0 10px}
+.svc p{color:var(--muted);font-size:14.5px;margin:0 0 24px;line-height:1.6}
+.svc .more{margin-top:auto;display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--text);font-weight:500}
+.svc .more svg{width:14px;height:14px;transition:transform .25s ease}
+.svc:hover .more svg{transform:translateX(4px);color:var(--accent)}
+.svc .tag{position:absolute;top:24px;right:24px;font-family:var(--mono);font-size:10px;letter-spacing:.18em;color:var(--accent);text-transform:uppercase;padding:5px 10px;border:1px solid var(--accent);border-radius:999px;background:rgba(168,230,53,.05)}
+
+/* ============== Process ============== */
+.process{position:relative}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:64px;border-top:1px solid var(--line)}
+.step{padding:36px 28px 36px 0;border-right:1px solid var(--line);position:relative}
+.step:last-child{border-right:0;padding-right:0}
+.step .step-num{font-family:var(--mono);font-size:12px;letter-spacing:.18em;color:var(--accent);display:flex;align-items:center;gap:10px}
+.step .step-num::before{content:"";width:24px;height:1px;background:var(--accent)}
+.step h4{font-family:var(--display);font-weight:600;font-size:22px;margin:20px 0 12px;letter-spacing:-.01em}
+.step p{color:var(--muted);font-size:14.5px;margin:0;line-height:1.6;max-width:32ch}
+.step .dot{position:absolute;top:-5px;left:0;width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 12px var(--accent-glow)}
+
+/* ============== Gallery ============== */
+.gallery-wrap{margin-top:56px}
+.before-after{position:relative;aspect-ratio:16/9;border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);user-select:none;touch-action:none;background:#080808}
+.ba-img{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted-2)}
+.ba-before{background:
+  radial-gradient(ellipse at 60% 70%, rgba(255,255,255,.04), transparent 60%),
+  linear-gradient(180deg,#1a1a1a,#0a0a0a);
+  background-color:#0d0d0d;
+}
+.ba-after{background:
+  radial-gradient(ellipse at 60% 50%, rgba(168,230,53,.08), transparent 55%),
+  radial-gradient(ellipse at 40% 60%, rgba(255,255,255,.12), transparent 50%),
+  linear-gradient(180deg,#222,#0a0a0a);
+  clip-path:polygon(0 0, 50% 0, 50% 100%, 0 100%);
+}
+.ba-after.dynamic{clip-path:var(--clip)}
+.ba-handle{position:absolute;top:0;bottom:0;left:50%;width:2px;background:var(--accent);box-shadow:0 0 20px var(--accent-glow);z-index:3;transform:translateX(-50%);pointer-events:none}
+.ba-knob{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:48px;height:48px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;color:#0a0a0a;font-weight:700;z-index:4;cursor:ew-resize;box-shadow:0 0 30px var(--accent-glow);transition:transform .2s ease}
+.ba-knob:hover{transform:translate(-50%,-50%) scale(1.08)}
+.ba-knob svg{width:20px;height:20px}
+.ba-label{position:absolute;top:18px;font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;padding:6px 12px;border:1px solid var(--line-2);background:rgba(0,0,0,.6);backdrop-filter:blur(6px);border-radius:4px;z-index:5}
+.ba-label.before{left:18px;color:var(--muted)}
+.ba-label.after{right:18px;color:var(--accent);border-color:var(--accent)}
+.ba-svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+
+.gallery-thumbs{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:14px}
+.thumb{aspect-ratio:4/3;border:1px solid var(--line);border-radius:10px;overflow:hidden;position:relative;background:linear-gradient(135deg,#141414,#0a0a0a);transition:border-color .2s ease;cursor:pointer}
+.thumb:hover{border-color:var(--accent)}
+.thumb::before{content:"";position:absolute;inset:0;background:
+  radial-gradient(ellipse at var(--x,50%) var(--y,50%), rgba(255,255,255,.08), transparent 50%);}
+.thumb .tag{position:absolute;bottom:10px;left:12px;font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);background:rgba(0,0,0,.6);padding:4px 8px;border-radius:4px}
+
+/* ============== Pricing ============== */
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:56px}
+.tier{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:36px 32px;position:relative;display:flex;flex-direction:column;transition:border-color .2s ease,transform .2s ease}
+.tier:hover{border-color:var(--line-2)}
+.tier.featured{border-color:var(--accent);background:linear-gradient(180deg,rgba(168,230,53,.04),transparent 60%),var(--surface)}
+.tier.featured::before{content:"AJÁNLOTT";position:absolute;top:-1px;right:24px;background:var(--accent);color:#0a0a0a;font-family:var(--mono);font-size:10px;letter-spacing:.2em;padding:6px 12px;border-radius:0 0 6px 6px;font-weight:600}
+.tier h4{font-family:var(--display);font-weight:700;font-size:14px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin:0}
+.tier .name{font-family:var(--display);font-weight:700;font-size:36px;letter-spacing:-.01em;margin:6px 0 0}
+.tier .price{margin-top:24px;padding-bottom:24px;border-bottom:1px solid var(--line)}
+.tier .price .amt{font-family:var(--display);font-weight:700;font-size:48px;letter-spacing:-.02em;line-height:1}
+.tier .price .from{font-family:var(--mono);font-size:11px;letter-spacing:.18em;color:var(--muted);text-transform:uppercase;display:block;margin-bottom:8px}
+.tier .price .unit{color:var(--muted);font-size:13px;margin-top:8px}
+.tier ul{list-style:none;padding:0;margin:24px 0 32px;display:flex;flex-direction:column;gap:12px}
+.tier ul li{font-size:14.5px;color:#cfcfcf;display:flex;gap:12px;align-items:flex-start;line-height:1.5}
+.tier ul li svg{width:16px;height:16px;color:var(--accent);flex-shrink:0;margin-top:3px}
+.tier ul li.off{color:var(--muted-2)}
+.tier ul li.off svg{color:var(--muted-2)}
+.tier .btn{margin-top:auto;width:100%}
+
+/* ============== Testimonials ============== */
+.testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:56px}
+.tst{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:32px;display:flex;flex-direction:column;position:relative}
+.tst .quote-mark{font-family:var(--display);font-weight:700;color:var(--accent);font-size:48px;line-height:.6;margin-bottom:18px;opacity:.5}
+.tst p{font-size:16px;line-height:1.6;color:#dcdcdc;margin:0 0 24px;flex:1}
+.tst .who{display:flex;align-items:center;gap:14px;padding-top:20px;border-top:1px solid var(--line)}
+.tst .avi{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#222,#0e0e0e);display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:600;color:var(--accent);font-size:14px;border:1px solid var(--line-2)}
+.tst .meta{font-size:13px;line-height:1.4}
+.tst .meta .name{color:var(--text);font-weight:600}
+.tst .meta .car{color:var(--muted);font-size:12px}
+.tst .stars{position:absolute;top:32px;right:32px;display:flex;gap:2px;color:var(--accent)}
+.tst .stars svg{width:14px;height:14px}
+
+/* ============== FAQ ============== */
+.faq-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;margin-top:56px;align-items:start}
+.faq-list{display:flex;flex-direction:column}
+details.qa{border-top:1px solid var(--line);padding:0}
+details.qa:last-of-type{border-bottom:1px solid var(--line)}
+details.qa summary{list-style:none;cursor:pointer;padding:24px 0;display:flex;align-items:center;justify-content:space-between;gap:24px;font-family:var(--display);font-weight:500;font-size:19px;letter-spacing:-.005em;color:var(--text);transition:color .2s ease}
+details.qa summary::-webkit-details-marker{display:none}
+details.qa summary:hover{color:var(--accent)}
+details.qa summary .plus{width:28px;height:28px;border-radius:50%;border:1px solid var(--line-2);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform .3s ease,background .3s ease,border-color .3s ease,color .3s ease;color:var(--muted)}
+details.qa summary .plus svg{width:12px;height:12px}
+details.qa[open] summary .plus{transform:rotate(45deg);background:var(--accent);border-color:var(--accent);color:#0a0a0a}
+details.qa[open] summary{color:var(--accent)}
+details.qa .answer{padding:0 0 28px;color:var(--muted);font-size:15.5px;line-height:1.7;max-width:55ch}
+
+/* ============== About ============== */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;margin-top:56px}
+.about-img{aspect-ratio:4/5;border-radius:var(--radius);border:1px solid var(--line-2);background:
+  radial-gradient(ellipse at 50% 40%, rgba(168,230,53,.08), transparent 50%),
+  radial-gradient(ellipse at 70% 80%, rgba(255,255,255,.06), transparent 60%),
+  linear-gradient(180deg,#161616,#080808);
+  position:relative;overflow:hidden}
+.about-img::after{content:"M Ű H E L Y";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font-family:var(--display);font-weight:700;letter-spacing:.2em;color:rgba(255,255,255,.04);font-size:clamp(40px,6vw,80px);white-space:nowrap}
+.about-img .placeholder-note{position:absolute;bottom:18px;left:18px;font-family:var(--mono);font-size:11px;letter-spacing:.18em;color:var(--muted-2);text-transform:uppercase}
+.about-text h2{font-family:var(--display);font-weight:700;font-size:clamp(34px,4.5vw,52px);letter-spacing:-.02em;line-height:1.05;margin:0}
+.about-text p{color:#cfcfcf;font-size:17px;line-height:1.7;margin:24px 0 0;max-width:48ch}
+.about-text .accent-line{color:var(--accent)}
+.about-meta{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:36px;padding-top:28px;border-top:1px solid var(--line)}
+.about-meta .m h5{font-family:var(--mono);font-size:11px;letter-spacing:.18em;color:var(--muted);text-transform:uppercase;margin:0 0 8px;font-weight:500}
+.about-meta .m p{font-size:15px;color:var(--text);margin:0;line-height:1.5}
+
+/* ============== Contact ============== */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;margin-top:56px;align-items:start}
+.contact-info .info-block{padding:24px 0;border-top:1px solid var(--line);display:flex;gap:18px;align-items:flex-start}
+.contact-info .info-block:last-child{border-bottom:1px solid var(--line)}
+.contact-info .info-block .ic{width:40px;height:40px;border-radius:10px;background:rgba(168,230,53,.08);border:1px solid rgba(168,230,53,.2);color:var(--accent);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.contact-info .info-block .ic svg{width:18px;height:18px}
+.contact-info .info-block h5{font-family:var(--mono);font-size:11px;letter-spacing:.18em;color:var(--muted);text-transform:uppercase;margin:6px 0 6px;font-weight:500}
+.contact-info .info-block p, .contact-info .info-block a{font-size:17px;color:var(--text);margin:0;line-height:1.5}
+.contact-info .info-block a:hover{color:var(--accent)}
+.contact-info .info-block .sub{font-size:13px;color:var(--muted);margin-top:4px}
+
+.contact-form{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:36px}
+.contact-form h3{font-family:var(--display);font-weight:600;font-size:24px;letter-spacing:-.01em;margin:0 0 8px}
+.contact-form .lead{color:var(--muted);font-size:14.5px;margin:0 0 28px}
+.field{margin-bottom:18px}
+.field label{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.18em;color:var(--muted);text-transform:uppercase;margin-bottom:8px}
+.field input,.field select,.field textarea{width:100%;background:var(--bg-2);border:1px solid var(--line-2);border-radius:8px;padding:13px 14px;color:var(--text);font-family:inherit;font-size:15px;transition:border-color .2s ease,background .2s ease;outline:none}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--accent);background:#0d0d0d}
+.field textarea{resize:vertical;min-height:110px}
+.field select{appearance:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path fill='%238a8a8a' d='M6 8L0 0h12z'/></svg>");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.field-check{display:flex;gap:10px;align-items:flex-start;font-size:13px;color:var(--muted);margin:6px 0 22px}
+.field-check input{accent-color:var(--accent);margin-top:3px}
+.field-check a{color:var(--accent);text-decoration:underline;text-underline-offset:3px}
+
+/* ============== Footer ============== */
+footer{padding:80px 0 30px;border-top:1px solid var(--line);background:var(--bg-1);position:relative}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px}
+.footer-brand .logo{font-size:28px}
+.footer-brand .tag{color:var(--muted);margin-top:18px;font-size:14.5px;max-width:32ch;line-height:1.6}
+.footer-col h6{font-family:var(--mono);font-size:11px;letter-spacing:.18em;color:var(--muted);text-transform:uppercase;margin:0 0 18px;font-weight:500}
+.footer-col ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:12px}
+.footer-col ul a{font-size:14.5px;color:#bdbdbd;transition:color .2s ease}
+.footer-col ul a:hover{color:var(--accent)}
+.footer-bot{margin-top:64px;padding-top:24px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;color:var(--muted-2);font-size:13px;gap:24px;flex-wrap:wrap}
+.socials{display:flex;gap:10px}
+.socials a{width:36px;height:36px;border-radius:10px;border:1px solid var(--line-2);display:flex;align-items:center;justify-content:center;color:var(--muted);transition:color .2s ease,border-color .2s ease,background .2s ease}
+.socials a:hover{color:var(--accent);border-color:var(--accent);background:rgba(168,230,53,.06)}
+.socials svg{width:16px;height:16px}
+
+/* ============== Reveal animation ============== */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .9s cubic-bezier(.2,.65,.3,1), transform .9s cubic-bezier(.2,.65,.3,1)}
+.reveal.in{opacity:1;transform:translateY(0)}
+@media (prefers-reduced-motion: reduce){.reveal{opacity:1;transform:none;transition:none}}
+
+/* ============== Responsive ============== */
+@media (max-width: 1024px){
+  .nav-links{display:none}
+  .menu-btn{display:flex}
+  .nav-cta .btn-ghost{display:none}
+  .hero-grid{grid-template-columns:1fr;gap:40px}
+  .hero{padding-top:120px}
+  .hero-visual{max-width:540px;margin:0 auto;width:100%}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .stat:nth-child(2){border-right:0}
+  .stat:nth-child(1),.stat:nth-child(2){border-bottom:1px solid var(--line)}
+  .services-grid > .svc,.services-grid > .svc.feature,.services-grid > .svc.wide,.services-grid > .svc.tall{grid-column:span 6;grid-row:auto;min-height:260px}
+  .steps{grid-template-columns:repeat(2,1fr)}
+  .step:nth-child(2){border-right:0}
+  .step:nth-child(1),.step:nth-child(2){border-bottom:1px solid var(--line);padding-bottom:36px}
+  .pricing-grid{grid-template-columns:1fr;max-width:480px;margin-left:auto;margin-right:auto}
+  .testimonials-grid{grid-template-columns:1fr;max-width:540px;margin-left:auto;margin-right:auto}
+  .faq-grid{grid-template-columns:1fr;gap:32px}
+  .about-grid{grid-template-columns:1fr;gap:40px}
+  .contact-grid{grid-template-columns:1fr;gap:40px}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:48px 32px}
+}
+@media (max-width: 640px){
+  .nav-cta .btn-primary span.hide-mobile{display:none}
+  .services-grid > .svc,.services-grid > .svc.feature,.services-grid > .svc.wide{grid-column:span 12}
+  .steps{grid-template-columns:1fr}
+  .step{border-right:0;border-bottom:1px solid var(--line);padding-bottom:36px}
+  .step:last-child{border-bottom:0}
+  .two-col{grid-template-columns:1fr}
+  .gallery-thumbs{grid-template-columns:repeat(2,1fr)}
+  .about-meta{grid-template-columns:1fr}
+  .hero-contact{flex-direction:column;gap:12px;align-items:flex-start}
+  .footer-grid{grid-template-columns:1fr}
+  .footer-bot{flex-direction:column;align-items:flex-start;gap:14px}
+  .contact-form{padding:28px 22px}
+  section{padding:70px 0}
+  .hero-marquee-track{font-size:14px;gap:36px}
+  .hero-marquee-track span{gap:36px}
+  .tier.featured::before{right:16px}
+}
+</style>
+</head>
+<body>
+
+<!-- ============== Nav ============== -->
+<nav class="top" id="topnav" data-screen-label="Nav">
+  <a href="#top" class="logo" aria-label="PROVEX – főoldal">PROVE<span class="x">X</span></a>
+  <div class="nav-links">
+    <a href="#szolgaltatasok">Szolgáltatások</a>
+    <a href="#galeria">Galéria</a>
+    <a href="#arak">Árak</a>
+    <a href="#folyamat">Folyamat</a>
+    <a href="#gyik">GYIK</a>
+    <a href="#rolunk">Rólunk</a>
+  </div>
+  <div class="nav-cta">
+    <a href="tel:+36302106895" data-tel="phone" class="btn btn-ghost">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      <span data-t="phone">+36 30 210 6895</span>
+    </a>
+    <a href="#kapcsolat" class="btn btn-primary">
+      <span class="hide-mobile">Időpontfoglalás</span><span style="display:none" class="show-mobile">Foglalás</span>
+      <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+    </a>
+    <button class="menu-btn" aria-label="Menü" onclick="document.getElementById('mob').style.display='flex'">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile menu -->
+<div id="mob" style="display:none;position:fixed;inset:0;z-index:100;background:#000;flex-direction:column;padding:24px;font-family:var(--display)">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:48px">
+    <span class="logo">PROVE<span class="x">X</span></span>
+    <button onclick="document.getElementById('mob').style.display='none'" style="background:none;border:0;color:#fff;font-size:32px;cursor:pointer">×</button>
+  </div>
+  <a href="#szolgaltatasok" onclick="document.getElementById('mob').style.display='none'" style="padding:18px 0;border-bottom:1px solid var(--line);font-size:24px;color:#fff">Szolgáltatások</a>
+  <a href="#galeria" onclick="document.getElementById('mob').style.display='none'" style="padding:18px 0;border-bottom:1px solid var(--line);font-size:24px;color:#fff">Galéria</a>
+  <a href="#arak" onclick="document.getElementById('mob').style.display='none'" style="padding:18px 0;border-bottom:1px solid var(--line);font-size:24px;color:#fff">Árak</a>
+  <a href="#folyamat" onclick="document.getElementById('mob').style.display='none'" style="padding:18px 0;border-bottom:1px solid var(--line);font-size:24px;color:#fff">Folyamat</a>
+  <a href="#gyik" onclick="document.getElementById('mob').style.display='none'" style="padding:18px 0;border-bottom:1px solid var(--line);font-size:24px;color:#fff">GYIK</a>
+  <a href="#rolunk" onclick="document.getElementById('mob').style.display='none'" style="padding:18px 0;border-bottom:1px solid var(--line);font-size:24px;color:#fff">Rólunk</a>
+  <a href="#kapcsolat" onclick="document.getElementById('mob').style.display='none'" class="btn btn-primary" style="margin-top:32px">Időpontfoglalás</a>
+</div>
+
+<!-- ============== Hero ============== -->
+<header class="hero" id="top" data-screen-label="Hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="hero-copy reveal">
+        <div class="eyebrow"><span class="dot"></span>PROVEX · Autókozmetika &amp; fóliázás</div>
+        <h1 class="hero-h1">
+          Láthatatlan<br/>
+          <span class="accent">védelem.</span><br/>
+          Látható részletek.
+        </h1>
+        <p class="hero-sub">PPF kőfelverődés elleni fólia, kerámia bevonat, prémium polírozás és teljes detailing — egy kézből, mérnöki precizitással. Az autód úgy néz ki, ahogy a gyárból kijött. Évekkel később is.</p>
+        <div class="hero-cta-row">
+          <a href="#kapcsolat" class="btn btn-primary">
+            Időpontfoglalás
+            <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
+          <a href="#kapcsolat" class="btn btn-ghost">Ingyenes árajánlat</a>
+          <a href="tel:+36302106895" data-tel="phone" class="btn btn-text">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;color:var(--accent)"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            Hívj most
+          </a>
+        </div>
+        <div class="hero-contact">
+          <a href="tel:+36302106895" data-tel="phone">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <span data-t="phone">+36 30 210 6895</span>
+          </a>
+          <a href="mailto:kozmetika@provex.hu" data-mail="email">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <span data-t="email">kozmetika@provex.hu</span>
+          </a>
+        </div>
+      </div>
+      <div class="hero-visual reveal">
+        <div class="badge"><span class="pulse"></span><span data-t="heroBadge">Új ügyfél? -10% az első kerámia bevonatra</span></div>
+        <img src="images/hero-provex.jpeg" alt="PROVEX – láthatatlan védelem" />
+      </div>
+    </div>
+  </div>
+  <div class="hero-marquee" aria-hidden="true">
+    <div class="hero-marquee-track">
+      <span>PPF Fólia <i class="dot"></i> Kerámia bevonat <i class="dot"></i> Polírozás <i class="dot"></i> Full Wrap <i class="dot"></i> Ablakfólia <i class="dot"></i> Fényszóró felújítás <i class="dot"></i> Detailing <i class="dot"></i> PPF Fólia <i class="dot"></i> Kerámia bevonat <i class="dot"></i> Polírozás <i class="dot"></i> Full Wrap <i class="dot"></i> Ablakfólia <i class="dot"></i> Fényszóró felújítás <i class="dot"></i> Detailing <i class="dot"></i></span>
+      <span>PPF Fólia <i class="dot"></i> Kerámia bevonat <i class="dot"></i> Polírozás <i class="dot"></i> Full Wrap <i class="dot"></i> Ablakfólia <i class="dot"></i> Fényszóró felújítás <i class="dot"></i> Detailing <i class="dot"></i> PPF Fólia <i class="dot"></i> Kerámia bevonat <i class="dot"></i> Polírozás <i class="dot"></i> Full Wrap <i class="dot"></i> Ablakfólia <i class="dot"></i> Fényszóró felújítás <i class="dot"></i> Detailing <i class="dot"></i></span>
+    </div>
+  </div>
+</header>
+
+<!-- ============== Stats ============== -->
+<section style="padding:0;border-top:0">
+  <div class="wrap" style="padding-left:0;padding-right:0">
+    <div class="stats">
+      <div class="stat reveal">
+        <div class="num">650<span class="plus">+</span></div>
+        <div class="label">Kezelt autó az elmúlt 5 évben</div>
+      </div>
+      <div class="stat reveal">
+        <div class="num">9<span class="plus">+</span></div>
+        <div class="label">Évek tapasztalat detailing-ben</div>
+      </div>
+      <div class="stat reveal">
+        <div class="num">10<span style="font-size:.6em;color:var(--muted)">év</span></div>
+        <div class="label">Garancia prémium kerámia bevonatra</div>
+      </div>
+      <div class="stat reveal">
+        <div class="num">4.9<span style="font-size:.6em;color:var(--muted)">/5</span></div>
+        <div class="label">Átlagos ügyfél értékelés</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== Services ============== -->
+<section id="szolgaltatasok" data-screen-label="Szolgáltatások">
+  <div class="wrap">
+    <div class="reveal" style="max-width:720px">
+      <div class="eyebrow"><span class="dot"></span>Szolgáltatások · 01</div>
+      <h2 class="section-title">Minden, ami az autód<br/>fényét és értékét védi.</h2>
+      <p class="section-sub">Hét szolgáltatás, egy filozófiával: nem eltakarjuk a hibákat, hanem megelőzzük őket. Profi anyagok, kontrollált környezet, mérhető eredmény.</p>
+    </div>
+
+    <div class="services-grid">
+      <article class="svc feature reveal">
+        <div class="svc-num">01 / Védelem</div>
+        <div class="svc-icon" style="color:var(--accent)">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M24 4l16 6v14c0 10-7 18-16 20-9-2-16-10-16-20V10l16-6z"/><path d="M16 24l6 6 12-12"/></svg>
+        </div>
+        <h3>PPF — Kőfelverődés elleni fólia</h3>
+        <p>Önregeneráló, ultratiszta poliuretán fólia teljes vagy részleges fedéssel. Megvédi a fényezést a kőfelverődéstől, rovarmaradványoktól, karcolásoktól — láthatatlanul.</p>
+        <span class="tag">10 év garancia</span>
+        <a href="#kapcsolat" class="more">Ajánlatot kérek
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+      </article>
+
+      <article class="svc reveal">
+        <div class="svc-num">02 / Védelem</div>
+        <div class="svc-icon">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="24" r="18"/><path d="M12 24c0-6.6 5.4-12 12-12"/><circle cx="18" cy="18" r="2" fill="currentColor"/></svg>
+        </div>
+        <h3>Kerámia bevonat</h3>
+        <p>9H keménységű kvarc-alapú bevonat. Hidrofób hatás, UV-védelem, mélyebb fény.</p>
+        <a href="#kapcsolat" class="more">Részletek
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+      </article>
+
+      <article class="svc reveal">
+        <div class="svc-num">03 / Felújítás</div>
+        <div class="svc-icon">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="24" r="14"/><circle cx="24" cy="24" r="6"/><path d="M24 4v6M24 38v6M4 24h6M38 24h6"/></svg>
+        </div>
+        <h3>Karosszéria polírozás</h3>
+        <p>1–3 lépéses gépi polírozás. Karcok, hologramok, oxidáció eltüntetése.</p>
+        <a href="#kapcsolat" class="more">Részletek
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+      </article>
+
+      <article class="svc reveal">
+        <div class="svc-num">04 / Esztétika</div>
+        <div class="svc-icon">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 32l8-8 8 8 16-16"/><path d="M28 8h12v12"/><rect x="6" y="36" width="36" height="6" rx="1"/></svg>
+        </div>
+        <h3>Színváltó full wrap</h3>
+        <p>Matt, fényes, szatén vagy textúrált felületek. Roncsolásmentes, visszafordítható.</p>
+        <a href="#kapcsolat" class="more">Részletek
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+      </article>
+
+      <article class="svc reveal">
+        <div class="svc-num">05 / Komfort</div>
+        <div class="svc-icon">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="10" width="36" height="28" rx="2"/><path d="M6 10l18 14L42 10"/><circle cx="24" cy="24" r="3" fill="currentColor"/></svg>
+        </div>
+        <h3>Ablakfóliázás</h3>
+        <p>UV- és hőszűrő üvegfólia. Diszkrét megjelenés, mérhető komfortnövelés.</p>
+        <a href="#kapcsolat" class="more">Részletek
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+      </article>
+
+      <article class="svc reveal">
+        <div class="svc-num">06 / Felújítás</div>
+        <div class="svc-icon">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 24c0-8 7-14 16-14s16 6 16 14"/><path d="M4 28h40"/><path d="M14 18l-3-4M34 18l3-4M24 10V4"/></svg>
+        </div>
+        <h3>Fényszóró polírozás</h3>
+        <p>Sárgult, opálos lámpabúrák átláthatóvá tétele. Forgalmi vizsgára felkészítve.</p>
+        <a href="#kapcsolat" class="more">Részletek
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+      </article>
+
+      <article class="svc reveal">
+        <div class="svc-num">07 / Detailing</div>
+        <div class="svc-icon">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="10" width="32" height="28" rx="3"/><path d="M14 22h20M14 28h14M14 16h8"/></svg>
+        </div>
+        <h3>Belső tér detailing</h3>
+        <p>Mélytisztítás, kárpit- és bőrápolás, szagtalanítás. Új-autó érzés visszahozva.</p>
+        <a href="#kapcsolat" class="more">Részletek
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============== Process ============== -->
+<section id="folyamat" class="process" data-screen-label="Folyamat">
+  <div class="wrap">
+    <div class="reveal" style="max-width:720px">
+      <div class="eyebrow"><span class="dot"></span>Folyamat · 02</div>
+      <h2 class="section-title">Négy lépés.<br/>Nulla meglepetés.</h2>
+      <p class="section-sub">Minden munka ugyanazon az úton fut végig. Átláthatóan, dokumentáltan, fix árral — még mielőtt elindulunk.</p>
+    </div>
+
+    <div class="steps">
+      <div class="step reveal">
+        <span class="dot"></span>
+        <div class="step-num">01 — Konzultáció</div>
+        <h4>Állapotfelmérés</h4>
+        <p>Behozod az autód, mi pedig mérőműszerrel és lámpafénynél átnézzük a karosszériát, dokumentáljuk a hibákat.</p>
+      </div>
+      <div class="step reveal">
+        <span class="dot"></span>
+        <div class="step-num">02 — Ajánlat</div>
+        <h4>Fix árajánlat</h4>
+        <p>A felmérés alapján írásos, tételes árajánlatot kapsz. Nincs „menet közbeni" felár — amit aláírsz, annyit fizetsz.</p>
+      </div>
+      <div class="step reveal">
+        <span class="dot"></span>
+        <div class="step-num">03 — Munka</div>
+        <h4>Műhelymunka</h4>
+        <p>Pormentes, kontrollált fényű boxban dolgozunk. A folyamatról fotódokumentációt küldünk.</p>
+      </div>
+      <div class="step reveal">
+        <span class="dot"></span>
+        <div class="step-num">04 — Átadás</div>
+        <h4>Átadás &amp; ápolás</h4>
+        <p>Átadáskor együtt nézzük át az eredményt. Garanciajegy, ápolási útmutató és későbbi ingyenes átnézés jár hozzá.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== Gallery / Before-After ============== -->
+<section id="galeria" data-screen-label="Galéria">
+  <div class="wrap">
+    <div class="reveal" style="max-width:720px">
+      <div class="eyebrow"><span class="dot"></span>Galéria · 03</div>
+      <h2 class="section-title">Előtte. Utána.<br/>Húzd el a csúszkát.</h2>
+      <p class="section-sub">A különbséget nem szavakkal magyarázzuk. A képek a végeredményt mutatják — valós ügyfél autókról, érintetlen utómunkával.</p>
+    </div>
+
+    <div class="gallery-wrap reveal">
+      <div class="before-after" id="ba" aria-label="Előtte-utána összehasonlító">
+        <div class="ba-img ba-before">
+          <svg class="ba-svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <defs>
+              <radialGradient id="gB" cx="60%" cy="65%" r="50%">
+                <stop offset="0%" stop-color="#2a2a2a"/>
+                <stop offset="100%" stop-color="#080808"/>
+              </radialGradient>
+              <pattern id="scratchB" width="40" height="40" patternUnits="userSpaceOnUse">
+                <path d="M0 20 L40 25" stroke="rgba(255,255,255,.07)" stroke-width="0.5"/>
+                <path d="M10 0 L15 40" stroke="rgba(255,255,255,.05)" stroke-width="0.5"/>
+              </pattern>
+            </defs>
+            <rect width="1600" height="900" fill="url(#gB)"/>
+            <rect width="1600" height="900" fill="url(#scratchB)"/>
+            <!-- Car silhouette dull -->
+            <path d="M200 600 Q260 460 420 440 L640 420 Q780 360 980 360 L1160 360 Q1300 380 1380 470 L1430 540 Q1480 560 1480 620 L1480 680 L200 680 Z" fill="#161616"/>
+            <circle cx="500" cy="680" r="80" fill="#0a0a0a"/>
+            <circle cx="1230" cy="680" r="80" fill="#0a0a0a"/>
+            <circle cx="500" cy="680" r="50" fill="#222"/>
+            <circle cx="1230" cy="680" r="50" fill="#222"/>
+            <!-- Dull glass -->
+            <path d="M540 440 Q620 380 760 380 L1020 380 Q1140 380 1240 440 L1240 480 L540 480 Z" fill="rgba(255,255,255,.04)"/>
+            <!-- Scratches overlay -->
+            <g opacity=".5">
+              <path d="M300 540 Q500 530 700 545" stroke="rgba(255,255,255,.1)" stroke-width="1" fill="none"/>
+              <path d="M800 580 Q1000 570 1200 580" stroke="rgba(255,255,255,.08)" stroke-width="1" fill="none"/>
+              <path d="M400 590 L900 595" stroke="rgba(255,255,255,.06)" stroke-width="1" fill="none"/>
+            </g>
+          </svg>
+        </div>
+        <div class="ba-img ba-after dynamic" id="baAfter">
+          <svg class="ba-svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <defs>
+              <radialGradient id="gA" cx="60%" cy="55%" r="55%">
+                <stop offset="0%" stop-color="#3a3a3a"/>
+                <stop offset="55%" stop-color="#141414"/>
+                <stop offset="100%" stop-color="#050505"/>
+              </radialGradient>
+              <linearGradient id="shineA" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="rgba(255,255,255,0)"/>
+                <stop offset="50%" stop-color="rgba(255,255,255,.2)"/>
+                <stop offset="100%" stop-color="rgba(168,230,53,.15)"/>
+              </linearGradient>
+            </defs>
+            <rect width="1600" height="900" fill="url(#gA)"/>
+            <!-- Car body polished -->
+            <path d="M200 600 Q260 460 420 440 L640 420 Q780 360 980 360 L1160 360 Q1300 380 1380 470 L1430 540 Q1480 560 1480 620 L1480 680 L200 680 Z" fill="#1a1a1a"/>
+            <!-- Reflections / highlights -->
+            <path d="M260 540 Q500 500 800 510 L1380 530" stroke="url(#shineA)" stroke-width="14" fill="none" opacity=".7"/>
+            <path d="M300 590 Q700 580 1100 585 L1380 595" stroke="rgba(255,255,255,.08)" stroke-width="2" fill="none"/>
+            <!-- Glass reflective -->
+            <path d="M540 440 Q620 380 760 380 L1020 380 Q1140 380 1240 440 L1240 480 L540 480 Z" fill="rgba(255,255,255,.12)"/>
+            <path d="M580 410 L720 400" stroke="rgba(255,255,255,.4)" stroke-width="2"/>
+            <!-- Wheels -->
+            <circle cx="500" cy="680" r="80" fill="#0a0a0a"/>
+            <circle cx="1230" cy="680" r="80" fill="#0a0a0a"/>
+            <circle cx="500" cy="680" r="50" fill="#2a2a2a"/>
+            <circle cx="1230" cy="680" r="50" fill="#2a2a2a"/>
+            <circle cx="500" cy="680" r="20" fill="#444"/>
+            <circle cx="1230" cy="680" r="20" fill="#444"/>
+            <!-- Headlight glow -->
+            <circle cx="1340" cy="500" r="70" fill="rgba(255,255,255,.18)"/>
+            <circle cx="1340" cy="500" r="30" fill="rgba(255,255,255,.5)"/>
+            <!-- Green PROVEX accent line -->
+            <line x1="0" y1="510" x2="1600" y2="510" stroke="#a8e635" stroke-width="2" opacity=".7"/>
+          </svg>
+        </div>
+        <div class="ba-handle" id="baHandle"></div>
+        <button class="ba-knob" id="baKnob" aria-label="Csúszka mozgatása">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/><polyline points="9 18 15 12 9 6" transform="translate(6)"/></svg>
+        </button>
+        <div class="ba-label before">Előtte</div>
+        <div class="ba-label after">Utána</div>
+      </div>
+
+      <div class="gallery-thumbs">
+        <div class="thumb reveal">
+          <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" style="width:100%;height:100%">
+            <rect width="400" height="300" fill="#0a0a0a"/>
+            <ellipse cx="200" cy="180" rx="160" ry="50" fill="#1a1a1a"/>
+            <path d="M50 180 Q200 100 350 180" stroke="rgba(168,230,53,.6)" stroke-width="2" fill="none"/>
+            <circle cx="120" cy="200" r="22" fill="#0a0a0a"/>
+            <circle cx="280" cy="200" r="22" fill="#0a0a0a"/>
+          </svg>
+          <span class="tag">PPF · Audi A6</span>
+        </div>
+        <div class="thumb reveal">
+          <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" style="width:100%;height:100%">
+            <rect width="400" height="300" fill="#0a0a0a"/>
+            <path d="M40 220 L40 80 L360 80 L360 220 Z" fill="#161616"/>
+            <circle cx="200" cy="150" r="50" fill="rgba(168,230,53,.15)"/>
+            <circle cx="200" cy="150" r="25" fill="rgba(255,255,255,.2)"/>
+          </svg>
+          <span class="tag">Kerámia · BMW M3</span>
+        </div>
+        <div class="thumb reveal">
+          <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" style="width:100%;height:100%">
+            <rect width="400" height="300" fill="#0a0a0a"/>
+            <ellipse cx="200" cy="180" rx="160" ry="50" fill="#222"/>
+            <path d="M60 170 Q200 130 340 170" stroke="rgba(255,255,255,.25)" stroke-width="3" fill="none"/>
+            <circle cx="120" cy="200" r="22" fill="#0a0a0a"/>
+            <circle cx="280" cy="200" r="22" fill="#0a0a0a"/>
+          </svg>
+          <span class="tag">Polírozás · Mercedes</span>
+        </div>
+        <div class="thumb reveal">
+          <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" style="width:100%;height:100%">
+            <rect width="400" height="300" fill="#0a0a0a"/>
+            <ellipse cx="200" cy="180" rx="160" ry="50" fill="#1a3a14"/>
+            <path d="M50 180 Q200 110 350 180" stroke="#a8e635" stroke-width="3" fill="none" opacity=".5"/>
+            <circle cx="120" cy="200" r="22" fill="#0a0a0a"/>
+            <circle cx="280" cy="200" r="22" fill="#0a0a0a"/>
+          </svg>
+          <span class="tag">Full Wrap · Porsche</span>
+        </div>
+      </div>
+      <p style="font-family:var(--mono);font-size:11px;letter-spacing:.18em;color:var(--muted-2);text-transform:uppercase;margin-top:18px;text-align:center">Hely a valós ügyfél fotóknak — később cseréld ki a galéria képeit</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============== Pricing ============== -->
+<section id="arak" data-screen-label="Árak">
+  <div class="wrap">
+    <div class="reveal" style="max-width:720px">
+      <div class="eyebrow"><span class="dot"></span>Csomagok · 04</div>
+      <h2 class="section-title">Tiszta árak.<br/>Tiszta különbségek.</h2>
+      <p class="section-sub">Három előre csomagolt megoldás a leggyakoribb igényekre. A pontos ár az autó méretétől és állapotától függ — minden ajánlat egyedi és írásos.</p>
+    </div>
+
+    <div class="pricing-grid">
+      <article class="tier reveal">
+        <h4>Alap</h4>
+        <div class="name">Frissítés</div>
+        <div class="price">
+          <span class="from">Bruttó ártól</span>
+          <span class="amt" data-t="pricing.0.price">79 000 Ft</span>
+          <div class="unit" data-t="pricing.0.duration">~ 1 munkanap</div>
+        </div>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Külső kézi mosás &amp; agyagozás</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>1-lépéses polírozás (light cut)</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Fényszóró polírozás</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Belső porszívózás &amp; műszerfal ápolás</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>6 hónap viaszos védelem</li>
+          <li class="off"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Kerámia bevonat</li>
+          <li class="off"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>PPF fólia</li>
+        </ul>
+        <a href="#kapcsolat" class="btn btn-ghost">Foglalás
+          <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+      </article>
+
+      <article class="tier featured reveal">
+        <h4>Prémium</h4>
+        <div class="name">Kerámia védelem</div>
+        <div class="price">
+          <span class="from">Bruttó ártól</span>
+          <span class="amt" data-t="pricing.1.price">189 000 Ft</span>
+          <div class="unit" data-t="pricing.1.duration">~ 2–3 munkanap</div>
+        </div>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Minden, ami az Alapban + …</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>2-lépéses gépi polírozás</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>9H kerámia bevonat (lakk + felni)</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Üveg hidrofób bevonat</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Belső detailing alap szinten</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>5 év írásos garancia</li>
+          <li class="off"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>PPF fólia</li>
+        </ul>
+        <a href="#kapcsolat" class="btn btn-primary">Foglalás
+          <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+      </article>
+
+      <article class="tier reveal">
+        <h4>Ultra</h4>
+        <div class="name">PPF + Kerámia</div>
+        <div class="price">
+          <span class="from">Bruttó ártól</span>
+          <span class="amt" data-t="pricing.2.price">690 000 Ft</span>
+          <div class="unit" data-t="pricing.2.duration">~ 5–7 munkanap</div>
+        </div>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Minden, ami a Prémiumban + …</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>PPF teljes első rész (kapota, lökhárító, sárvédők, tükrök)</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Önregeneráló prémium fólia</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>9H kerámia a PPF-en is</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Mélytisztító belső detailing + bőrápolás</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>10 év írásos garancia</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Évenkénti ingyenes átnézés</li>
+        </ul>
+        <a href="#kapcsolat" class="btn btn-ghost">Foglalás
+          <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+      </article>
+    </div>
+
+    <p style="text-align:center;color:var(--muted);font-size:14px;margin-top:32px">Egyedi igényre — full wrap, részleges PPF, flotta — <a href="#kapcsolat" style="color:var(--accent);text-decoration:underline;text-underline-offset:3px">kérj egyedi árajánlatot</a>.</p>
+  </div>
+</section>
+
+<!-- ============== Testimonials ============== -->
+<section data-screen-label="Referenciák">
+  <div class="wrap">
+    <div class="reveal" style="max-width:720px">
+      <div class="eyebrow"><span class="dot"></span>Vélemények · 05</div>
+      <h2 class="section-title">Ügyfeleink<br/>szavaival.</h2>
+      <p class="section-sub">Több mint 650 autó az elmúlt években. Itt van három őszinte vélemény azoktól, akiknek a részletek számítanak.</p>
+    </div>
+
+    <div class="testimonials-grid">
+      <article class="tst reveal">
+        <div class="stars" aria-label="5 csillag">
+          <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 17 14 19 22 12 17 5 22 7 14 2 9 9 9"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 17 14 19 22 12 17 5 22 7 14 2 9 9 9"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 17 14 19 22 12 17 5 22 7 14 2 9 9 9"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 17 14 19 22 12 17 5 22 7 14 2 9 9 9"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 17 14 19 22 12 17 5 22 7 14 2 9 9 9"/></svg>
+        </div>
+        <div class="quote-mark">"</div>
+        <p>Két éve vagyok PROVEX ügyfél. A kerámia bevonat ma is úgy gyöngyözi a vizet, mint az első napon. Pontosak, korrektek, és a fotódokumentáció mindent visz.</p>
+        <div class="who">
+          <div class="avi">SZ</div>
+          <div class="meta">
+            <div class="name">Szabó Zoltán</div>
+            <div class="car">BMW M340i · Kerámia bevonat</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="tst reveal">
+        <div class="stars" aria-label="5 csillag">
+          <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 17 14 19 22 12 17 5 22 7 14 2 9 9 9"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 17 14 19 22 12 17 5 22 7 14 2 9 9 9"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 17 14 19 22 12 17 5 22 7 14 2 9 9 9"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 17 14 19 22 12 17 5 22 7 14 2 9 9 9"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 17 14 19 22 12 17 5 22 7 14 2 9 9 9"/></svg>
+        </div>
+        <div class="quote-mark">"</div>
+        <p>Új autóra vettem PPF-et a teljes első részre. Egy év, három autópályás út, nulla kőfelverődés a lakkon. Megérte minden forintot. Bencéék tudják, mit csinálnak.</p>
+        <div class="who">
+          <div class="avi">KA</div>
+          <div class="meta">
+            <div class="name">Kovács András</div>
+            <div class="car">Audi RS6 · PPF teljes első</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="tst reveal">
+        <div class="stars" aria-label="5 csillag">
+          <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 17 14 19 22 12 17 5 22 7 14 2 9 9 9"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 17 14 19 22 12 17 5 22 7 14 2 9 9 9"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 17 14 19 22 12 17 5 22 7 14 2 9 9 9"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 17 14 19 22 12 17 5 22 7 14 2 9 9 9"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 17 14 19 22 12 17 5 22 7 14 2 9 9 9"/></svg>
+        </div>
+        <div class="quote-mark">"</div>
+        <p>Egy 8 éves Golf R-t hoztam be, „kifényesítésre". Visszakaptam egy szalonautót. Az utastér is olyan, mint új korában. Egyetlen helyre megyek vissza.</p>
+        <div class="who">
+          <div class="avi">NT</div>
+          <div class="meta">
+            <div class="name">Nagy Tamás</div>
+            <div class="car">VW Golf R · Full detailing</div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============== FAQ ============== -->
+<section id="gyik" data-screen-label="GYIK">
+  <div class="wrap">
+    <div class="faq-grid">
+      <div class="reveal">
+        <div class="eyebrow"><span class="dot"></span>GYIK · 06</div>
+        <h2 class="section-title">Gyakori<br/>kérdések.</h2>
+        <p class="section-sub">Ha nem találod itt a kérdésedre a választ, írj nekünk emailben vagy hívj fel. 24 órán belül válaszolunk.</p>
+        <a href="#kapcsolat" class="btn btn-ghost" style="margin-top:32px">Tedd fel a kérdésed
+          <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <div class="faq-list reveal">
+        <details class="qa">
+          <summary>Mi a különbség a PPF és a kerámia bevonat között?
+            <span class="plus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg></span>
+          </summary>
+          <div class="answer">A PPF egy ~200 mikron vastag, önregeneráló poliuretán fólia, ami fizikai védelmet ad — megfogja a kőfelverődést, a karcokat, a rovarmaradványokat. A kerámia bevonat ezzel szemben egy ~2–3 mikron vastag kvarc-alapú réteg, ami kémiai védelmet és vízlepergető hatást ad. A kettő nem helyettesíti, hanem kiegészíti egymást — a legjobb védelem PPF + kerámia kombinációban.</div>
+        </details>
+        <details class="qa">
+          <summary>Mennyi időt vesz igénybe egy teljes csomag?
+            <span class="plus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg></span>
+          </summary>
+          <div class="answer">Az Alap csomag 1 munkanap, a Prémium kerámia bevonat 2–3 nap (a kötési idő miatt), az Ultra PPF + kerámia kombináció 5–7 munkanap. Pontos időt a felmérés után tudunk mondani — a határidőt szerződésben rögzítjük.</div>
+        </details>
+        <details class="qa">
+          <summary>Milyen garanciát adtok?
+            <span class="plus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg></span>
+          </summary>
+          <div class="answer">A prémium kerámia bevonatra 5 év, az Ultra csomagra (PPF + kerámia) 10 év írásos gyártói garanciát adunk. A garanciajegyet az átadáskor papíron is megkapod. A garancia rendszeres ellenőrzéshez és ápolási előírások betartásához kötött — minden évben térítésmentesen átnézzük az autód.</div>
+        </details>
+        <details class="qa">
+          <summary>Mosható az autó kerámia bevonat / PPF után?
+            <span class="plus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg></span>
+          </summary>
+          <div class="answer">Igen, sőt: a kerámia bevonatos autó sokkal könnyebben tisztítható, mert a kosz nem tud belekapaszkodni a felületbe. Kerüld a kefés automata mosót — 2-bucket módszerrel mosd otthon, vagy gyere hozzánk fenntartó mosásra. Az első 2 hétben viszont semmilyen vizet ne tegyél rá, hogy a bevonat teljesen kiköthessen.</div>
+        </details>
+        <details class="qa">
+          <summary>Új autóra is érdemes PPF-et tenni?
+            <span class="plus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg></span>
+          </summary>
+          <div class="answer">Új autónál a legjobb a helyzet — a fényezés tökéletes állapotban van, így a PPF azonnal a gyári lakkot védi, nem egy már sérültet. Ráadásul az autó értéke is jobban megmarad, eladáskor a fólia leszedhető, és alatta szalongyári állapot vár.</div>
+        </details>
+        <details class="qa">
+          <summary>Visszafordítható a színváltó fóliázás?
+            <span class="plus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg></span>
+          </summary>
+          <div class="answer">Igen, a teljes fóliázás roncsolásmentes és visszafordítható. Egy minőségi vinil fólia 5–7 évig probléma nélkül viselhető, és leszedés után az eredeti fényezés érintetlenül kerül elő. Ezért is népszerű lízingelt vagy bérelt autóknál.</div>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== About ============== -->
+<section id="rolunk" data-screen-label="Rólunk">
+  <div class="wrap">
+    <div class="reveal" style="max-width:720px">
+      <div class="eyebrow"><span class="dot"></span>Rólunk · 07</div>
+    </div>
+    <div class="about-grid">
+      <div class="about-img reveal">
+        <span class="placeholder-note">Helyőrző · Műhely fotó</span>
+      </div>
+      <div class="about-text reveal">
+        <h2>Egy autószerelő<br/>műhely, ami<br/><span class="accent-line">megszállottan</span><br/>figyel a részletekre.</h2>
+        <p>A PROVEX nem egy gyors-fényesítő. Egy kontrollált, pormentes box, ahol minden autó ugyanúgy bánásmódot kap, mint a sajátunk. Németországból és Egyesült Államokból hozzuk az alapanyagokat, és csak olyan eljárásokat alkalmazunk, amiknek mérhető, dokumentálható eredménye van.</p>
+        <p>A célunk egyszerű: amikor visszakapod az autód, az legyen jobb állapotban, mint amikor behoztad. Nem hosszabban, nem kockázattal — egyszerűen csak jobban.</p>
+
+        <div class="about-meta">
+          <div class="m">
+            <h5>Cím</h5>
+            <p><span data-t="addressShort">Budapest, XIII. kerület</span><br/><span data-t="addressNote" style="color:var(--muted);font-size:13px">Pontos cím egyeztetés után</span></p>
+          </div>
+          <div class="m">
+            <h5>Nyitvatartás</h5>
+            <p><span data-t="hoursMain">H–P · 08:00 – 18:00</span><br/><span data-t="hoursSaturday" style="color:var(--muted);font-size:13px">Szo · előre egyeztetve</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== Contact ============== -->
+<section id="kapcsolat" data-screen-label="Kapcsolat">
+  <div class="wrap">
+    <div class="reveal" style="max-width:720px">
+      <div class="eyebrow"><span class="dot"></span>Kapcsolat · 08</div>
+      <h2 class="section-title">Foglalj időpontot.<br/>Kérdezz bármit.</h2>
+      <p class="section-sub">Írj nekünk pár sort az autódról és arról, mire lenne szükséged. 24 órán belül visszaírunk egy konkrét ajánlattal és időpont javaslattal.</p>
+    </div>
+
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <div class="info-block">
+          <div class="ic">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <div>
+            <h5>Telefon</h5>
+            <a href="tel:+36302106895" data-tel="phone" data-t="phone">+36 30 210 6895</a>
+            <div class="sub" data-t="hoursMain">H–P · 08:00 – 18:00</div>
+          </div>
+        </div>
+        <div class="info-block">
+          <div class="ic">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div>
+            <h5>Email</h5>
+            <a href="mailto:kozmetika@provex.hu" data-mail="email" data-t="email">kozmetika@provex.hu</a>
+            <div class="sub">24 órán belül válaszolunk</div>
+          </div>
+        </div>
+        <div class="info-block">
+          <div class="ic">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div>
+            <h5>Műhely</h5>
+            <p data-t="addressShort">Budapest, XIII. kerület</p>
+            <div class="sub" data-t="addressNote">Pontos cím egyeztetés után</div>
+          </div>
+        </div>
+        <div class="info-block">
+          <div class="ic">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div>
+            <h5>Válaszidő</h5>
+            <p data-t="responseTime">Munkanapokon 2 órán belül</p>
+            <div class="sub" data-t="responseTimeSub">Hétvégén következő munkanapon</div>
+          </div>
+        </div>
+      </div>
+
+      <form class="contact-form reveal" onsubmit="event.preventDefault();this.querySelector('button').innerHTML='✓ Köszönjük, hamarosan válaszolunk';this.querySelector('button').disabled=true;this.querySelector('button').style.background='var(--accent)';this.querySelector('button').style.color='#0a0a0a'">
+        <h3>Foglalási kérés</h3>
+        <p class="lead">Nem szerződés, csak egy lazább érdeklődés. Visszahívunk vagy emailben válaszolunk.</p>
+
+        <div class="two-col">
+          <div class="field">
+            <label for="f-name">Név</label>
+            <input id="f-name" type="text" required placeholder="Példa Béla" />
+          </div>
+          <div class="field">
+            <label for="f-phone">Telefon</label>
+            <input id="f-phone" type="tel" required placeholder="+36 30 ..." />
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="f-email">Email</label>
+          <input id="f-email" type="email" required placeholder="te@email.hu" />
+        </div>
+
+        <div class="two-col">
+          <div class="field">
+            <label for="f-car">Autó</label>
+            <input id="f-car" type="text" placeholder="pl. BMW 320i, 2020" />
+          </div>
+          <div class="field">
+            <label for="f-svc">Érdekel</label>
+            <select id="f-svc">
+              <option>PPF — Kőfelverődés elleni fólia</option>
+              <option>Kerámia bevonat</option>
+              <option>Polírozás</option>
+              <option>Színváltó fóliázás</option>
+              <option>Ablakfóliázás</option>
+              <option>Fényszóró polírozás</option>
+              <option>Belső detailing</option>
+              <option>Több szolgáltatás / egyedi</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="f-msg">Üzenet</label>
+          <textarea id="f-msg" placeholder="Pár sor arról, mire lenne szükséged…"></textarea>
+        </div>
+
+        <div class="field-check">
+          <input id="f-gdpr" type="checkbox" required />
+          <label for="f-gdpr">Elfogadom az <a href="#">adatkezelési tájékoztatót</a> és hozzájárulok, hogy a megadott adataimon felvegyétek velem a kapcsolatot.</label>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width:100%">
+          Foglalás elküldése
+          <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============== Footer ============== -->
+<footer data-screen-label="Footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span class="logo">PROVE<span class="x">X</span></span>
+        <p class="tag">Láthatatlan védelem. Látható részletek. Prémium autókozmetika és fóliázás Budapesten.</p>
+        <div class="socials" style="margin-top:24px">
+          <a href="#" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+          </a>
+          <a href="#" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </a>
+          <a href="#" aria-label="TikTok">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg>
+          </a>
+          <a href="#" aria-label="YouTube">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12s0-3.5-.5-5.2a2.8 2.8 0 0 0-2-2C17.8 4.5 12 4.5 12 4.5s-5.8 0-7.5.3a2.8 2.8 0 0 0-2 2C2 8.5 2 12 2 12s0 3.5.5 5.2a2.8 2.8 0 0 0 2 2c1.7.3 7.5.3 7.5.3s5.8 0 7.5-.3a2.8 2.8 0 0 0 2-2C22 15.5 22 12 22 12z"/><polygon points="10 8 16 12 10 16" fill="currentColor"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h6>Szolgáltatások</h6>
+        <ul>
+          <li><a href="#szolgaltatasok">PPF fólia</a></li>
+          <li><a href="#szolgaltatasok">Kerámia bevonat</a></li>
+          <li><a href="#szolgaltatasok">Polírozás</a></li>
+          <li><a href="#szolgaltatasok">Full wrap</a></li>
+          <li><a href="#szolgaltatasok">Ablakfólia</a></li>
+          <li><a href="#szolgaltatasok">Detailing</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h6>Cég</h6>
+        <ul>
+          <li><a href="#rolunk">Rólunk</a></li>
+          <li><a href="#galeria">Galéria</a></li>
+          <li><a href="#arak">Árak</a></li>
+          <li><a href="#gyik">GYIK</a></li>
+          <li><a href="#kapcsolat">Kapcsolat</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h6>Kapcsolat</h6>
+        <ul>
+          <li><a href="tel:+36302106895" data-tel="phone" data-t="phone">+36 30 210 6895</a></li>
+          <li><a href="mailto:kozmetika@provex.hu" data-mail="email" data-t="email">kozmetika@provex.hu</a></li>
+          <li><a href="#kapcsolat" data-t="addressShort">Budapest, XIII. ker.</a></li>
+          <li data-t="hoursMain" style="color:var(--muted-2);font-size:13px;margin-top:8px">H–P · 08:00 – 18:00</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bot">
+      <div>© 2026 PROVEX. Minden jog fenntartva.</div>
+      <div style="display:flex;gap:24px">
+        <a href="#" style="color:var(--muted-2)">Adatvédelem</a>
+        <a href="#" style="color:var(--muted-2)">ÁSZF</a>
+        <a href="#" style="color:var(--muted-2)">Süti tájékoztató</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Sticky nav style change
+const nav = document.getElementById('topnav');
+const onScroll = () => {
+  if (window.scrollY > 24) nav.classList.add('scrolled');
+  else nav.classList.remove('scrolled');
+};
+window.addEventListener('scroll', onScroll, {passive:true});
+onScroll();
+
+// Reveal on scroll
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+}, {threshold: .12, rootMargin: '0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+// Before/After slider
+(function(){
+  const ba = document.getElementById('ba');
+  const after = document.getElementById('baAfter');
+  const knob = document.getElementById('baKnob');
+  const handle = document.getElementById('baHandle');
+  if (!ba) return;
+  let pct = 50;
+  let dragging = false;
+
+  const update = (p) => {
+    pct = Math.max(2, Math.min(98, p));
+    after.style.setProperty('--clip', `polygon(0 0, ${pct}% 0, ${pct}% 100%, 0 100%)`);
+    handle.style.left = pct + '%';
+    knob.style.left = pct + '%';
+  };
+  update(50);
+
+  const posFromEvent = (e) => {
+    const r = ba.getBoundingClientRect();
+    const x = (e.touches ? e.touches[0].clientX : e.clientX) - r.left;
+    return (x / r.width) * 100;
+  };
+
+  const start = (e) => { dragging = true; document.body.style.userSelect='none'; update(posFromEvent(e)); };
+  const move = (e) => { if (!dragging) return; update(posFromEvent(e)); e.preventDefault && e.preventDefault(); };
+  const end = () => { dragging = false; document.body.style.userSelect=''; };
+
+  knob.addEventListener('mousedown', start);
+  ba.addEventListener('mousedown', (e) => { if (e.target !== knob) start(e); });
+  window.addEventListener('mousemove', move);
+  window.addEventListener('mouseup', end);
+
+  knob.addEventListener('touchstart', start, {passive:true});
+  ba.addEventListener('touchstart', (e) => { if (e.target !== knob) start(e); }, {passive:true});
+  window.addEventListener('touchmove', move, {passive:false});
+  window.addEventListener('touchend', end);
+
+  // Idle gentle hint animation
+  let hinted = false;
+  const hint = () => {
+    if (hinted || dragging) return;
+    hinted = true;
+    let t = 0;
+    const id = setInterval(() => {
+      t += 1;
+      const p = 50 + Math.sin(t/8) * 12;
+      if (!dragging) update(p);
+      if (t > 50) { clearInterval(id); update(50); }
+    }, 40);
+  };
+  const hintIO = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { setTimeout(hint, 500); hintIO.disconnect(); } });
+  }, {threshold:.4});
+  hintIO.observe(ba);
+})();
+
+// ============== Content loader (CMS) ==============
+// Loads /content.json if present and patches dynamic fields.
+// Site degrades gracefully to hardcoded defaults if file is missing.
+(function(){
+  fetch('content.json',{cache:'no-store'}).then(r=>r.ok?r.json():null).then(d=>{
+    if(!d) return;
+    const dig = (key) => key.split('.').reduce((o,k)=> (o==null?undefined:o[k]), d);
+    document.querySelectorAll('[data-t]').forEach(el=>{
+      const v = dig(el.dataset.t);
+      if(v!=null && v!=='') el.textContent = v;
+    });
+    document.querySelectorAll('[data-tel]').forEach(el=>{
+      const v = dig(el.dataset.tel);
+      if(v!=null && v!=='') el.href = 'tel:'+String(v).replace(/[^\d+]/g,'');
+    });
+    document.querySelectorAll('[data-mail]').forEach(el=>{
+      const v = dig(el.dataset.mail);
+      if(v!=null && v!=='') el.href = 'mailto:'+v;
+    });
+  }).catch(()=>{});
+})();
+</script>
+
+<script>
+(async () => {
+  // Prepend so page-supplied @page / break rules (deck-stage's margin:0,
+  // author CSS) keep source-order precedence over the baseline.
+  const baseCss = document.createElement('style');
+  baseCss.textContent = "@media print {\n  @page { margin: 0.5cm; }\n  html, body { print-color-adjust: exact; -webkit-print-color-adjust: exact; }\n  section, article, figure, table { break-inside: avoid; }\n  *, *::before, *::after {\n    animation-delay: -99s !important; animation-duration: .001s !important;\n    animation-iteration-count: 1 !important; animation-fill-mode: both !important;\n    animation-play-state: running !important; transition-duration: 0s !important;\n  }\n}";
+  document.head.prepend(baseCss);
+  if (document.readyState === 'loading') {
+    await new Promise((r) => document.addEventListener('DOMContentLoaded', r, { once: true }));
+  }
+  let ds = document.querySelector('deck-stage');
+  // whenDefined never resolves when nothing registers the element, so only
+  // await it when a <deck-stage> tag exists (and race a timeout regardless).
+  if (ds && !customElements.get('deck-stage')) {
+    try {
+      await Promise.race([
+        customElements.whenDefined('deck-stage'),
+        new Promise((r) => setTimeout(r, 3000)),
+      ]);
+    } catch (e) {}
+    ds = document.querySelector('deck-stage');
+  }
+  // dc-runtime assigns window.DCLogic at init and mounts into #dc-root on
+  // DOMContentLoaded; settle on that subtree so React has rendered before
+  // print(). Non-DC pages fall through to weighing body.
+  const isDc = !ds && 'DCLogic' in window;
+  const settleRoot = ds || (isDc ? document.getElementById('dc-root') : null) || document.body;
+  if (settleRoot) {
+    // Weigh only content children — skip script/style/template so inline
+    // Babel/CSS doesn't register as stable "content" before the framework
+    // has mounted anything.
+    const MEDIA = 'img,svg,canvas,video,picture,iframe,embed,object';
+    const weigh = () => {
+      let text = 0, media = 0;
+      for (const c of settleRoot.children) {
+        const t = c.tagName;
+        if (t === 'SCRIPT' || t === 'STYLE' || t === 'TEMPLATE') continue;
+        text += (c.textContent || '').trim().length;
+        media += c.querySelectorAll(MEDIA).length + (c.matches(MEDIA) ? 1 : 0);
+      }
+      return text + media * 100;
+    };
+    // "Non-zero and stable" alone is not sufficient to mean rendered: generic
+    // body can carry a static shell while async main content is pending, and
+    // #dc-root can carry the root DC's static text while child refs are still
+    // .sc-placeholder boxes. Gate generic on readyState 'complete', and never
+    // accept stability while a dc-runtime placeholder is present.
+    const isGeneric = settleRoot === document.body;
+    const deadline = Date.now() + 15000;
+    let last = -1, stable = 0;
+    while (Date.now() < deadline) {
+      const n = weigh();
+      const ready =
+        (!isGeneric || document.readyState === 'complete') &&
+        !settleRoot.querySelector('.sc-placeholder');
+      if (n > 0 && n === last && ready) { if (++stable >= 2) break; } else { stable = 0; }
+      last = n;
+      await new Promise((r) => setTimeout(r, 250));
+    }
+  }
+  try { await document.fonts.ready; } catch (e) {}
+  // Jump every animation to its end state so print() never captures a slide
+  // mid-entrance. Ordering matters: the 0s-transition style must be live
+  // BEFORE data-deck-active is set so attribute-keyed transitions don't
+  // start a (now-0s) run from the pre-active base.
+  const st = document.createElement('style');
+  st.textContent = '*,*::before,*::after{animation-delay:-99s !important;animation-duration:.001s !important;animation-iteration-count:1 !important;animation-fill-mode:both !important;animation-play-state:running !important;transition-duration:0s !important}';
+  document.head.appendChild(st);
+  for (const d of document.querySelectorAll('deck-stage')) {
+    for (const c of d.children) {
+      const t = c.tagName;
+      if (t === 'SCRIPT' || t === 'STYLE' || t === 'TEMPLATE') continue;
+      c.setAttribute('data-deck-active', '');
+    }
+  }
+  try {
+    const sweep = () => {
+      for (const a of document.getAnimations()) {
+        try { a.finish(); } catch (e) {
+          try { a.currentTime = (a.effect && a.effect.getComputedTiming().duration) || 0; a.pause(); } catch (e2) {}
+        }
+      }
+    };
+    sweep();
+    await new Promise((r) => requestAnimationFrame(r));
+    sweep();
+    await new Promise((r) => requestAnimationFrame(r));
+  } catch (e) {}
+  setTimeout(() => { try { window.print(); } catch (e) {} }, 200);
+})();
+</script>
+</body>
+</html>
