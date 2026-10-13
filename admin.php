@@ -67,6 +67,25 @@ if (!is_authed() && $_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login
     }
 }
 
+// ============== SZÖVEGEK (szerkesztés az oldalon) ==============
+// Az index.html szerkesztő módja (/?szerkesztes=1) ide küldi az átírt szövegeket.
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['texts_json'])) {
+    header('Content-Type: application/json; charset=utf-8');
+    if (!is_authed()) { http_response_code(401); echo '{"ok":false,"error":"login"}'; exit; }
+    $in = json_decode((string)$_POST['texts_json'], true);
+    if (!is_array($in) || count($in) > 2000) { http_response_code(400); echo '{"ok":false}'; exit; }
+    $texts = [];
+    foreach ($in as $k => $v) {
+        if (!is_string($v) || !preg_match('/^[0-9.]+$/', (string)$k) || strlen($v) > 20000) continue;
+        $texts[(string)$k] = preg_replace('~<\s*/?\s*(script|iframe|object|embed|style)\b[^>]*>~i', '', $v);
+    }
+    $data = load_content();
+    $data['texts'] = (object)$texts;
+    if (!save_content($data)) { http_response_code(500); echo '{"ok":false}'; exit; }
+    echo '{"ok":true}';
+    exit;
+}
+
 // ============== MENTÉS ==============
 $save_msg = '';
 $save_err = '';
@@ -285,6 +304,8 @@ h1{font-family:var(--display);font-weight:700;font-size:44px;letter-spacing:-.02
     <div class="eyebrow">Backoffice</div>
     <h1>Tartalom szerkesztése</h1>
     <p class="lead">Itt módosíthatod a weboldal főbb adatait. A változások mentés után azonnal megjelennek az élő oldalon.</p>
+    <p style="margin:0 0 28px"><a href="index.html?szerkesztes=1" class="btn btn-primary">Szövegek átírása az oldalon →</a></p>
+    <p class="lead">A fenti gombbal megnyílik az oldal szerkesztő módban: kattints bármelyik szövegre (címek, kártyák, leírások), írd át, majd nyomd meg a Mentést.</p>
 
     <?php if ($save_msg): ?>
       <div class="toast ok">

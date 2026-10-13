@@ -1220,6 +1220,75 @@ document.querySelectorAll('.reveal').forEach(el => io.observe(el));
     });
   }).catch(()=>{});
 })();
+
+// ============== Inline text editor (admin) ==============
+// Text overrides live in content.json -> "texts" (key = element position).
+// /?szerkesztes=1 turns on edit mode; saving needs an admin.php login.
+(function(){
+  const keyOf = (el) => { const p=[]; for(let n=el; n && n!==document.body; n=n.parentElement) p.unshift(Array.prototype.indexOf.call(n.parentElement.children,n)); return p.join('.'); };
+  const hasText = (el) => Array.prototype.some.call(el.childNodes, n=>n.nodeType===3 && n.textContent.trim()!=='');
+  const items = [];
+  (function walk(el){
+    for(const c of el.children){
+      if(c.matches('script,style,svg,noscript,input,textarea,select,[data-t]')) continue;
+      if(hasText(c) && !c.querySelector('[data-t],input,textarea,select,script')) items.push(c);
+      else walk(c);
+    }
+  })(document.body);
+  const keys = new Map(items.map(el=>[el,keyOf(el)]));
+  const editing = /[?&]szerkesztes=1/.test(location.search);
+  let texts = {};
+
+  fetch('content.json',{cache:'no-store'}).then(r=>r.ok?r.json():null).then(d=>{
+    if(d && d.texts && !Array.isArray(d.texts)) texts = d.texts;
+    items.forEach(el=>{ const v = texts[keys.get(el)]; if(typeof v==='string') el.innerHTML = v; });
+  }).catch(()=>{}).then(()=>{ if(editing) startEditor(); });
+
+  function startEditor(){
+    const dirty = new Set();
+    const css = document.createElement('style');
+    css.textContent = '.pvx-editbar{position:fixed;left:0;right:0;bottom:0;z-index:99999;display:flex;gap:10px;align-items:center;flex-wrap:wrap;padding:12px 16px;background:#111;border-top:2px solid #a8e635;color:#fff;font:14px/1.4 system-ui,sans-serif}.pvx-editbar button{font:inherit;font-weight:700;padding:9px 16px;border-radius:8px;border:1px solid #555;background:#222;color:#fff;cursor:pointer}.pvx-editbar .pvx-save{background:#a8e635;color:#000;border-color:#a8e635}.pvx-editbar span{flex:1;min-width:200px}.pvx-editbar a{color:#a8e635}[data-pvx-edit]{outline:1px dashed rgba(168,230,53,.55);outline-offset:3px;cursor:text}[data-pvx-edit]:focus{outline:2px solid #a8e635;background:rgba(168,230,53,.08)}.reveal{opacity:1!important;transform:none!important}body{padding-bottom:90px}';
+    document.head.appendChild(css);
+    const bar = document.createElement('div');
+    bar.className = 'pvx-editbar';
+    bar.innerHTML = '<span>Szerkesztő mód: kattints bármelyik szövegre, és írd át.</span><button type="button" class="pvx-save">Mentés</button><button type="button" class="pvx-reset">Eredeti szövegek</button><button type="button" class="pvx-exit">Kilépés</button>';
+    document.body.appendChild(bar);
+    const msg = bar.querySelector('span');
+
+    items.forEach(el=>{
+      el.contentEditable = 'true';
+      el.spellcheck = false;
+      el.setAttribute('data-pvx-edit','');
+      el.addEventListener('input',()=>{ dirty.add(el); msg.textContent = dirty.size+' módosítás még nincs elmentve.'; });
+      el.addEventListener('keydown',e=>{ if(e.key==='Enter'){ e.preventDefault(); el.blur(); } });
+      el.addEventListener('paste',e=>{ e.preventDefault(); document.execCommand('insertText',false,(e.clipboardData||window.clipboardData).getData('text')); });
+    });
+    document.addEventListener('click',e=>{ if(!e.target.closest('.pvx-editbar') && e.target.closest('a,[type=submit]')) e.preventDefault(); },true);
+    window.addEventListener('beforeunload',e=>{ if(dirty.size){ e.preventDefault(); e.returnValue=''; } });
+
+    const post = (obj) => fetch('admin.php',{method:'POST',credentials:'same-origin',body:new URLSearchParams({texts_json:JSON.stringify(obj)})})
+      .then(r=>r.json().catch(()=>({})).then(j=>({status:r.status,ok:r.ok && j.ok})));
+    const fail = (res) => {
+      if(res && res.status===401) msg.innerHTML = 'Előbb be kell lépni: <a href="admin.php" target="_blank">admin belépés</a>, utána nyomd meg újra a Mentést.';
+      else msg.textContent = 'Hiba: nem sikerült menteni.';
+    };
+
+    bar.querySelector('.pvx-save').onclick = () => {
+      const out = Object.assign({}, texts);
+      dirty.forEach(el=>{ out[keys.get(el)] = el.innerHTML; });
+      msg.textContent = 'Mentés…';
+      post(out).then(res=>{
+        if(!res.ok) return fail(res);
+        texts = out; dirty.clear(); msg.textContent = '✓ Elmentve. Az oldalon azonnal él.';
+      }).catch(()=>fail());
+    };
+    bar.querySelector('.pvx-reset').onclick = () => {
+      if(!confirm('Minden átírt szöveg visszaáll az eredetire. Biztos?')) return;
+      post({}).then(res=>{ if(!res.ok) return fail(res); dirty.clear(); location.reload(); }).catch(()=>fail());
+    };
+    bar.querySelector('.pvx-exit').onclick = () => { location.href = location.pathname; };
+  }
+})();
 </script>
 
 </body>
