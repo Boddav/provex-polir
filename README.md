@@ -103,3 +103,11 @@ sudo certbot --nginx -d provex.hu -d www.provex.hu
 - **A változások nem jelennek meg az oldalon:** frissíts hard reload-dal (Ctrl+Shift+R). A böngésző cache-elheti a `content.json`-t.
 - **„HIBA: nem sikerült menteni":** ellenőrizd a `content.json` jogosultságait (chmod 664, www-data tulajdon).
 - **Nem tudok belépni:** a jelszót `admin.php`-ban közvetlenül lehet módosítani.
+
+## Véleményezős link (feedback.php)
+
+`https://provex.hu/feedback.php` — az oldal előnézete + egy megjegyzés mező. Bence (vagy bárki) itt írhatja le, mit változtassunk; a megjegyzések a `feedback.json`-ba kerülnek.
+
+- Írhatóvá kell tenni: `sudo chown www-data:www-data feedback.json && sudo chmod 664 feedback.json`
+- Az „Összes másolása" gombbal egyben kimásolható a lista, és beadható Claude-nak szerkesztésre.
+- Az oldal `noindex`; ha nem akarod, hogy bárki lássa, védd jelszóval (nginx `auth_basic`) vagy töröld élesítéskor.
